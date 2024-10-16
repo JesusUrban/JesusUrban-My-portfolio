@@ -38,7 +38,11 @@ const translations = {
         message: "Mensaje",
         send: "Enviar",
         socialMedia: "Redes sociales",
-        copyright: "© 2024, Todos los derechos reservados"
+        copyright: ", Todos los derechos reservados",
+
+
+        java: 'Desarrollo de aplicaciones de escritorio robustas que agilizan las interacciones de los usuarios. Aprovechó los principios de programación orientada a objetos para crear código que se puede mantener. Colaboré con equipos para integrar soluciones Java con sistemas de software existentes.'
+
     },
     en: {
         home: "Home",
@@ -79,8 +83,66 @@ const translations = {
         message: "Message",
         send: "Send",
         socialMedia: "Social media",
-        copyright: "© 2024, All rights reserved"
+        copyright: ", All rights reserved",
+
+
+        java: 'Developed robust desktop applications that streamline user interactions. Leveraged object-oriented programming principles to create maintainable code. Collaborated with teams to integrate Java solutions with existing software systems.'
     }
 };
 
-console.log(translations.en.aboutMe);
+//here I will do my code
+document.getElementById("language-toggle").addEventListener("change", function() {
+    const language = this.checked ? 'en' : 'es'; // Assume spanish when checked, unchecked when unchecked
+    applyLanguage(language);
+  });
+  
+  function applyLanguage(language) {
+    document.querySelector('[href="#home"]').textContent = translations[language].home;
+    document.querySelector('[href="#about"]').textContent = translations[language].aboutMe;
+    document.querySelector('[href="#skills"]').textContent = translations[language].skills;
+    document.querySelector('[href="#projects"]').textContent = translations[language].projects;
+    document.querySelector('[href="#contact"]').textContent = translations[language].contact;
+    
+    document.querySelector('.home__title').textContent = translations[language].webDeveloper;
+    document.querySelector('.home__description').textContent = translations[language].intro;
+    document.querySelector('.btn--primary').textContent = translations[language].downloadCV;
+    document.querySelector('.about__description').textContent = translations[language].aboutMeText;
+  
+
+
+    // Additional elements (assuming you have these on your site)
+    document.querySelector('.section__title').textContent = translations[language].aboutMe;
+    document.getElementById('SkillsO').textContent = translations[language].skills;
+    document.querySelector('.skills__description').textContent = translations[language].skillsIntro;
+    document.querySelector('#Java').textContent = translations[language].java;
+    
+    // Any other text content that needs translation
+    document.querySelector('.skills__tags-title').textContent = translations[language].softSkills;
+    document.querySelector('.Res').textContent = translations[language].responsible;
+    document.querySelector('.Tea').textContent = translations[language].teamwork;
+    document.querySelector('.Creat').textContent = translations[language].creative;
+    document.querySelector('.Punc').textContent = translations[language].punctual;
+    document.querySelector('.Proac').textContent = translations[language].proactive;
+    document.querySelector('.Sel').textContent = translations[language].selfTaught;
+    
+    
+
+
+
+    
+    document.querySelector('.contact__info-description').textContent = translations[language].contactDescription
+    document.querySelector('.footer__description').textContent = translations[language].intro;
+    
+    
+    //The current year and all rights reserve
+
+    const currentYear = new Date().getFullYear();
+    
+    document.querySelector('.footer__copy').textContent = `© ${currentYear}`+translations[language].copyright;
+	
+
+     
+
+  }
+  
+  export default applyLanguage;

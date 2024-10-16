@@ -499,7 +499,7 @@ html {
 				text-transform: uppercase;
 				border-right: 4px solid;
 				white-space: nowrap;
-				width: 16ch;
+				width: 20ch;
 				animation: typing 2s infinite steps(15) alternate,
 					blink 0.3s infinite step-end alternate;
 				overflow: hidden;
