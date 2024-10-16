@@ -20,3 +20,8 @@ updateDateYear();
 sendEmail();
 
 applyLanguage
+
+
+document.querySelector('.Ekaz').addEventListener("click", function() {
+    window.open('https://jesusurban.github.io/Ekaz/', '_blank');
+  });
