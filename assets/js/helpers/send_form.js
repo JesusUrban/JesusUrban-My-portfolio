@@ -11,23 +11,34 @@ function closeModal() {
 }
 
 function sendEmail() {
-	formDOM.addEventListener('submit', (e) => {
-		e.preventDefault();
-		const params = {
-			name: document.getElementById('name').value,
-			email: document.getElementById('email').value,
-			subject: document.getElementById('subject').value,
-			message: document.getElementById('message').value,
-		};
+    if (!formDOM) return;
+    formDOM.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const params = {
+            name: document.getElementById('name')?.value?.trim(),
+            email: document.getElementById('email')?.value?.trim(),
+            subject: document.getElementById('subject')?.value?.trim(),
+            message: document.getElementById('message')?.value?.trim(),
+        };
 
-		if (params.name && params.email && params.subject && params.message) {
-			emailjs
-				.send('service_mh6njza', 'template_ox37jzz', params)
-				.then(openModal());
-		}
-	});
+        if (params.name && params.email && params.subject && params.message) {
+            if (typeof emailjs !== 'undefined' && emailjs?.send) {
+                emailjs
+                    .send('service_mh6njza', 'template_ox37jzz', params)
+                    .then(() => {
+                        openModal();
+                        formDOM.reset();
+                    })
+                    .catch((err) => {
+                        console.error('EmailJS error:', err);
+                    });
+            }
+        }
+    });
 }
 
-closeButton.addEventListener('click', closeModal);
+if (closeButton) {
+    closeButton.addEventListener('click', closeModal);
+}
 
 export default sendEmail;

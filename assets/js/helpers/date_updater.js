@@ -3,7 +3,9 @@ function updateDateYear() {
 
 	const copyrightElement = document.querySelector('.footer__copy');
 
-	copyrightElement.textContent = `© ${currentYear}, All rights reserved`;
+	if (copyrightElement) {
+		copyrightElement.textContent = `© ${currentYear}, All rights reserved`;
+	}
 }
 
 export default updateDateYear;

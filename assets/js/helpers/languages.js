@@ -41,7 +41,7 @@ const translations = {
         copyright: ", Todos los derechos reservados",
 
 
-        java: 'Desarrollo de aplicaciones de escritorio robustas que agilizan las interacciones de los usuarios. Aprovechó los principios de programación orientada a objetos para crear código que se puede mantener. Colaboré con equipos para integrar soluciones Java con sistemas de software existentes.'
+        java: 'Desarrollo de aplicaciones de escritorio robustas que agilizan las interacciones de los usuarios. Aprovecho los principios de programación orientada a objetos para crear código mantenible. Colaboro con equipos para integrar soluciones Java con sistemas de software existentes.'
 
     },
     en: {
@@ -79,7 +79,7 @@ const translations = {
         sendMessage: "Send message",
         name: "Name",
         email: "Email",
-        affair: "Affair",
+        affair: "Subject",
         message: "Message",
         send: "Send",
         socialMedia: "Social media",
@@ -90,55 +90,66 @@ const translations = {
     }
 };
 
-//here I will do my code
-document.getElementById("language-toggle").addEventListener("change", function() {
-    const language = this.checked ? 'en' : 'es'; // Assume spanish when checked, unchecked when unchecked
-    applyLanguage(language);
-  });
+// Event binding for language toggle is handled by the main entry script
   
   function applyLanguage(language) {
-    document.querySelector('[href="#home"]').textContent = translations[language].home;
-    document.querySelector('[href="#about"]').textContent = translations[language].aboutMe;
-    document.querySelector('[href="#skills"]').textContent = translations[language].skills;
-    document.querySelector('[href="#projects"]').textContent = translations[language].projects;
-    document.querySelector('[href="#contact"]').textContent = translations[language].contact;
+    document.querySelector('[href="#home"]')?.textContent = translations[language].home;
+    document.querySelector('[href="#about"]')?.textContent = translations[language].aboutMe;
+    document.querySelector('[href="#skills"]')?.textContent = translations[language].skills;
+    document.querySelector('[href="#projects"]')?.textContent = translations[language].projects;
+    document.querySelector('[href="#contact"]')?.textContent = translations[language].contact;
     
-    document.querySelector('.home__title').textContent = translations[language].webDeveloper;
-    document.querySelector('.home__description').textContent = translations[language].intro;
-    document.querySelector('.btn--primary').textContent = translations[language].downloadCV;
-    document.querySelector('.about__description').textContent = translations[language].aboutMeText;
+    document.querySelector('.home__title')?.textContent = translations[language].webDeveloper;
+    document.querySelector('.home__description')?.textContent = translations[language].intro;
+    document.querySelector('.btn--primary')?.textContent = translations[language].downloadCV;
+    document.querySelector('.about__description')?.textContent = translations[language].aboutMeText;
   
 
 
     // Additional elements (assuming you have these on your site)
-    document.querySelector('.section__title').textContent = translations[language].aboutMe;
-    document.getElementById('SkillsO').textContent = translations[language].skills;
-    document.querySelector('.skills__description').textContent = translations[language].skillsIntro;
-    document.querySelector('#Java').textContent = translations[language].java;
+    document.querySelector('.section__title')?.textContent = translations[language].aboutMe;
+    document.getElementById('SkillsO')?.textContent = translations[language].skills;
+    document.querySelector('.skills__description')?.textContent = translations[language].skillsIntro;
+    document.querySelector('#Java')?.textContent = translations[language].java;
     
     // Any other text content that needs translation
-    document.querySelector('.skills__tags-title').textContent = translations[language].softSkills;
-    document.querySelector('.Res').textContent = translations[language].responsible;
-    document.querySelector('.Tea').textContent = translations[language].teamwork;
-    document.querySelector('.Creat').textContent = translations[language].creative;
-    document.querySelector('.Punc').textContent = translations[language].punctual;
-    document.querySelector('.Proac').textContent = translations[language].proactive;
-    document.querySelector('.Sel').textContent = translations[language].selfTaught;
+    document.querySelector('.skills__tags-title')?.textContent = translations[language].softSkills;
+    document.querySelector('.Res')?.textContent = translations[language].responsible;
+    document.querySelector('.Tea')?.textContent = translations[language].teamwork;
+    document.querySelector('.Creat')?.textContent = translations[language].creative;
+    document.querySelector('.Punc')?.textContent = translations[language].punctual;
+    document.querySelector('.Proac')?.textContent = translations[language].proactive;
+    document.querySelector('.Sel')?.textContent = translations[language].selfTaught;
     
     
 
 
 
     
-    document.querySelector('.contact__info-description').textContent = translations[language].contactDescription
-    document.querySelector('.footer__description').textContent = translations[language].intro;
+    document.querySelector('#projects .section__title')?.textContent = translations[language].projectsSection;
+    document.querySelector('#contact .section__title')?.textContent = translations[language].contact;
+    document.querySelector('#skills .section__title')?.textContent = translations[language].skills;
+
+    document.querySelector('.contact__form-title')?.textContent = translations[language].sendMessage;
+    document.querySelector('label[for="name"]')?.textContent = translations[language].name;
+    document.querySelector('label[for="email"]')?.textContent = translations[language].email;
+    document.querySelector('label[for="subject"]')?.textContent = translations[language].affair;
+    document.querySelector('label[for="message"]')?.textContent = translations[language].message;
+    document.querySelector('.contact__form-button')?.textContent = translations[language].send;
+
+    document.querySelector('.contact__info-description')?.textContent = translations[language].contactDescription
+    document.querySelector('.footer__description')?.textContent = translations[language].intro;
+    document.querySelector('.footer__social .footer__title')?.textContent = translations[language].socialMedia;
     
     
     //The current year and all rights reserve
 
     const currentYear = new Date().getFullYear();
     
-    document.querySelector('.footer__copy').textContent = `© ${currentYear}`+translations[language].copyright;
+    const footerCopy = document.querySelector('.footer__copy');
+    if (footerCopy) {
+        footerCopy.textContent = `© ${currentYear}` + translations[language].copyright;
+    }
 	
 
      

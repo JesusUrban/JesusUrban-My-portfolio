@@ -1,8 +1,12 @@
-const navbarListDOM = document.querySelector('.navbar__list');
-const navbarLinksDOM = document.querySelectorAll('.navbar__link');
-const sectionsDOM = document.querySelectorAll('section');
-
 function activeMenu() {
+	const navbarListDOM = document.querySelector('.navbar__list');
+	const navbarLinksDOM = document.querySelectorAll('.navbar__link');
+	const sectionsDOM = document.querySelectorAll('section');
+
+	if (!navbarListDOM || navbarLinksDOM.length === 0 || sectionsDOM.length === 0) {
+		return;
+	}
+
 	window.addEventListener('scroll', () => {
 		const scrollPosition = window.scrollY + 100;
 
