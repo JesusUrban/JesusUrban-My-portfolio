@@ -1,7 +1,8 @@
-const homeDOM = document.getElementById('home');
-const imagesDOM = document.querySelectorAll('.home__layer');
-
 function parallax() {
+	const homeDOM = document.getElementById('home');
+	if (!homeDOM) return;
+	const imagesDOM = document.querySelectorAll('.home__layer');
+
 	homeDOM.addEventListener('mousemove', (e) => {
 		imagesDOM.forEach((img) => {
 			const speed = img.getAttribute('data-speed');

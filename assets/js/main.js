@@ -9,19 +9,32 @@ import sendEmail from './helpers/send_form.js';
 
 loader();
 
-resetToHome();
+document.addEventListener('DOMContentLoaded', () => {
+    resetToHome();
+    activeMenu();
+    parallax();
+    updateDateYear();
+    sendEmail();
 
-activeMenu();
+    // Initialize language based on saved preference or current toggle state
+    const languageToggle = document.getElementById('language-toggle');
+    let savedLanguage = null;
+    try {
+        savedLanguage = localStorage.getItem('preferredLanguage');
+    } catch (e) {}
 
-parallax();
+    if (savedLanguage) {
+        applyLanguage(savedLanguage);
+        if (languageToggle) languageToggle.checked = savedLanguage === 'en';
+    } else {
+        const initialLanguage = languageToggle && languageToggle.checked ? 'en' : 'es';
+        applyLanguage(initialLanguage);
+    }
 
-updateDateYear();
-
-sendEmail();
-
-applyLanguage
-
-
-document.querySelector('.Ekaz').addEventListener("click", function() {
-    window.open('https://jesusurban.github.io/Ekaz/', '_blank');
-  });
+    const ekazButton = document.querySelector('.Ekaz');
+    if (ekazButton) {
+        ekazButton.addEventListener('click', function () {
+            window.open('https://jesusurban.github.io/Ekaz/', '_blank', 'noopener');
+        });
+    }
+});
